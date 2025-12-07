@@ -1,0 +1,15 @@
+[submodule "src/external/libPWTShared"]
+	path = src/external/libPWTShared
+	url = https://github.com/PowerTuner/libPWTShared
+[submodule "src/external/libPWTWin32"]
+	path = src/external/libPWTWin32
+	url = https://github.com/PowerTuner/libPWTWin32
+[submodule "src/external/commonResources"]
+	path = src/external/commonResources
+	url = https://github.com/PowerTuner/commonResources
+[submodule "src/external/libPWTClientService"]
+	path = src/external/libPWTClientService
+	url = https://github.com/PowerTuner/libPWTClientService
+[submodule "src/external/libPWTClientCommon"]
+	path = src/external/libPWTClientCommon
+	url = https://github.com/PowerTuner/libPWTClientCommon
