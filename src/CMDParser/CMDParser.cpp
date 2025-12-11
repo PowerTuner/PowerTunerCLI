@@ -788,21 +788,21 @@ namespace PWT::CLI {
             << helpIndent(helpIndentLv1) << pstateCmdArg << "\n"
             << helpIndent(helpIndentLv2) << "Thread level setting.\n"
             << helpIndent(helpIndentLv2) << "CPU P-State control.\n"
-            << helpIndent(helpIndentLv2) << sendInfoReqHelp
+            << helpIndent(helpIndentLv2) << sendDataReqHelp
             << helpIndent(helpIndentLv1) << cppcEnableArg << "\n"
             << helpIndent(helpIndentLv2) << "Enable CPPC. [1,1]\n\n"
             << helpIndent(helpIndentLv1) << cppcRequestMinPerfArg << "\n"
             << helpIndent(helpIndentLv2) << "Thread level setting.\n"
             << helpIndent(helpIndentLv2) << "CPPC request minimum performance.\n"
-            << helpIndent(helpIndentLv2) << sendInfoReqHelp
+            << helpIndent(helpIndentLv2) << sendDataReqHelp
             << helpIndent(helpIndentLv1) << cppcRequestMaxPerfArg << "\n"
             << helpIndent(helpIndentLv2) << "Thread level setting.\n"
             << helpIndent(helpIndentLv2) << "CPPC request maximum performance.\n"
-            << helpIndent(helpIndentLv2) << sendInfoReqHelp
+            << helpIndent(helpIndentLv2) << sendDataReqHelp
             << helpIndent(helpIndentLv1) << cppcRequestDesiredPerfArg << "\n"
             << helpIndent(helpIndentLv2) << "Thread level setting.\n"
             << helpIndent(helpIndentLv2) << "CPPC request desired performance.\n"
-            << helpIndent(helpIndentLv2) << sendInfoReqHelp
+            << helpIndent(helpIndentLv2) << sendDataReqHelp
             << helpIndent(helpIndentLv1) << cppcRequestEppArg << "\n"
             << helpIndent(helpIndentLv2) << "Thread level setting.\n"
             << helpIndent(helpIndentLv2) << "CPPC request energy performance preference. [0, 255]\n\n"
