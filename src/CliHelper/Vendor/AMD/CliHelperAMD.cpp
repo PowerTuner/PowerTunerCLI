@@ -377,7 +377,7 @@ namespace PWT::CLI {
 
     void CliHelperAMD::setCoreData(PWTS::AMD::AMDCoreData &data, const QString &argIdx) const {
         if (features.cpu.contains(PWTS::Feature::AMD_CPU_RY_GROUP)) {
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_PER))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_PER_W))
                 setCOPer(data, argIdx);
         }
     }
@@ -407,52 +407,52 @@ namespace PWT::CLI {
 
     void CliHelperAMD::setClientPacketData() {
         if (features.cpu.contains(PWTS::Feature::AMD_CPU_RY_GROUP)) {
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SLOW))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SLOW_W))
                 setApuSlow();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_STAPM_LIMIT))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_STAPM_LIMIT_W))
                 setStapmLimit();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_SLOW_LIMIT))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_SLOW_LIMIT_W))
                 setSlowLimit();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_FAST_LIMIT))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_FAST_LIMIT_W))
                 setFastLimit();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_TCTL_TEMP))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_TCTL_TEMP_W))
                 setTctlTemp();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SKIN_TEMP))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SKIN_TEMP_W))
                 setApuSkinTemp();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_DGPU_SKIN_TEMP))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_DGPU_SKIN_TEMP_W))
                 setDgpuSkinTemp();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_CURRENT))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_CURRENT_W))
                 setVrmCurrent();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_CURRENT))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_CURRENT_W))
                 setVrmSocCurrent();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_MAX_CURRENT))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_MAX_CURRENT_W))
                 setVrmMaxCurrent();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_MAX_CURRENT))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_MAX_CURRENT_W))
                 setVrmSocMaxCurrent();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_STATIC_GFX_CLK))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_STATIC_GFX_CLK_W))
                 setStaticGfxClock();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_MIN_GFX_CLOCK))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_MIN_GFX_CLOCK_W))
                 setMinGfxClock();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_MAX_GFX_CLOCK))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_MAX_GFX_CLOCK_W))
                 setMaxGfxClock();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_POWER_PROFILE))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_POWER_PROFILE_W))
                 setPowerProfile();
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_ALL))
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_ALL_W))
                 setCOAll();
         }
 

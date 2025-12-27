@@ -131,7 +131,7 @@ namespace PWT::CLI {
         QJsonObject rangesDB;
 
         if (features.contains(PWTS::Feature::AMD_CPU_RY_GROUP)) {
-            if (features.contains(PWTS::Feature::AMD_RY_SLOW_LIMIT) || features.contains(PWTS::Feature::AMD_RY_FAST_LIMIT) || features.contains(PWTS::Feature::AMD_RY_STAPM_LIMIT)) {
+            if (features.contains(PWTS::Feature::AMD_RY_SLOW_LIMIT_W) || features.contains(PWTS::Feature::AMD_RY_FAST_LIMIT_W) || features.contains(PWTS::Feature::AMD_RY_STAPM_LIMIT_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJPl();
                 QJsonObject rangeObj;
 
@@ -140,7 +140,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_power_limit", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_TCTL_TEMP)) {
+            if (features.contains(PWTS::Feature::AMD_RY_TCTL_TEMP_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJTctl();
                 QJsonObject rangeObj;
 
@@ -149,7 +149,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_tctl", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_APU_SLOW)) {
+            if (features.contains(PWTS::Feature::AMD_RY_APU_SLOW_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJAPUSlow();
                 QJsonObject rangeObj;
 
@@ -158,7 +158,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_apu_slow_limit", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_APU_SKIN_TEMP)) {
+            if (features.contains(PWTS::Feature::AMD_RY_APU_SKIN_TEMP_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJAPUSkinTemp();
                 QJsonObject rangeObj;
 
@@ -167,7 +167,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_apu_skin_temp", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_DGPU_SKIN_TEMP)) {
+            if (features.contains(PWTS::Feature::AMD_RY_DGPU_SKIN_TEMP_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJDGPUSkinTemp();
                 QJsonObject rangeObj;
 
@@ -176,7 +176,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_dgpu_skin_temp", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_VRM_CURRENT)) {
+            if (features.contains(PWTS::Feature::AMD_RY_VRM_CURRENT_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJVrmCurrent();
                 QJsonObject rangeObj;
 
@@ -185,7 +185,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_vrm_current", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_VRM_SOC_CURRENT)) {
+            if (features.contains(PWTS::Feature::AMD_RY_VRM_SOC_CURRENT_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJVrmSocCurrent();
                 QJsonObject rangeObj;
 
@@ -194,7 +194,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_vrm_soc_current", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_STATIC_GFX_CLK) || features.contains(PWTS::Feature::AMD_RY_MIN_GFX_CLOCK) || features.contains(PWTS::Feature::AMD_RY_MAX_GFX_CLOCK)) {
+            if (features.contains(PWTS::Feature::AMD_RY_STATIC_GFX_CLK_W) || features.contains(PWTS::Feature::AMD_RY_MIN_GFX_CLOCK_W) || features.contains(PWTS::Feature::AMD_RY_MAX_GFX_CLOCK_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJGfxClock();
                 QJsonObject rangeObj;
 
@@ -203,7 +203,7 @@ namespace PWT::CLI {
                 rangesDB.insert("ryzenadj_gfx_clock", rangeObj);
             }
 
-            if (features.contains(PWTS::Feature::AMD_RY_CO_ALL) || features.contains(PWTS::Feature::AMD_RY_CO_PER)) {
+            if (features.contains(PWTS::Feature::AMD_RY_CO_ALL_W) || features.contains(PWTS::Feature::AMD_RY_CO_PER_W)) {
                 const PWTS::MinMax limit = inputRanges->getRADJCO();
                 QJsonObject rangeObj;
 
@@ -582,7 +582,7 @@ namespace PWT::CLI {
             const QString coreStr = QString("core_%1").arg(i++);
 
             if (features.cpu.contains(PWTS::Feature::AMD_CPU_RY_GROUP)) {
-                if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_PER) && core.curveOptimizer.isValid())
+                if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_PER_W) && core.curveOptimizer.isValid())
                     curveCoreObj.insert(coreStr, core.curveOptimizer.getValue());
             }
         }
@@ -676,49 +676,49 @@ namespace PWT::CLI {
         }
 
         if (features.cpu.contains(PWTS::Feature::AMD_CPU_RY_GROUP)) {
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SKIN_TEMP) && data->apuSkinTemp.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SKIN_TEMP_W) && data->apuSkinTemp.isValid())
                 jobj.insert("apu_skin_temp", data->apuSkinTemp.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SLOW) && data->apuSlow.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_APU_SLOW_W) && data->apuSlow.isValid())
                 jobj.insert("apu_slow_limit", data->apuSlow.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_DGPU_SKIN_TEMP) && data->dgpuSkinTemp.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_DGPU_SKIN_TEMP_W) && data->dgpuSkinTemp.isValid())
                 jobj.insert("dgpu_skin_temp", data->dgpuSkinTemp.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_FAST_LIMIT) && data->fastLimit.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_FAST_LIMIT_W) && data->fastLimit.isValid())
                 jobj.insert("fast_limit", data->fastLimit.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_MIN_GFX_CLOCK) && data->minGfxClock.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_MIN_GFX_CLOCK_W) && data->minGfxClock.isValid())
                 jobj.insert("min_gfx_clock", data->minGfxClock.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_MAX_GFX_CLOCK) && data->maxGfxClock.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_MAX_GFX_CLOCK_W) && data->maxGfxClock.isValid())
                 jobj.insert("max_gfx_clock", data->maxGfxClock.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_SLOW_LIMIT) && data->slowLimit.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_SLOW_LIMIT_W) && data->slowLimit.isValid())
                 jobj.insert("slow_limit", data->slowLimit.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_STAPM_LIMIT) && data->stapmLimit.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_STAPM_LIMIT_W) && data->stapmLimit.isValid())
                 jobj.insert("stapm_limit", data->stapmLimit.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_TCTL_TEMP) && data->tctlTemp.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_TCTL_TEMP_W) && data->tctlTemp.isValid())
                 jobj.insert("tctl_temp", data->tctlTemp.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_CURRENT) && data->vrmCurrent.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_CURRENT_W) && data->vrmCurrent.isValid())
                 jobj.insert("vrm_current", data->vrmCurrent.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_MAX_CURRENT) && data->vrmMaxCurrent.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_MAX_CURRENT_W) && data->vrmMaxCurrent.isValid())
                 jobj.insert("vrm_max_current", data->vrmMaxCurrent.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_CURRENT) && data->vrmSocCurrent.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_CURRENT_W) && data->vrmSocCurrent.isValid())
                 jobj.insert("vrm_soc_current", data->vrmSocCurrent.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_MAX_CURRENT) && data->vrmSocMaxCurrent.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_MAX_CURRENT_W) && data->vrmSocMaxCurrent.isValid())
                 jobj.insert("vrm_soc_max_current", data->vrmSocMaxCurrent.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_POWER_PROFILE) && data->powerProfile.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_POWER_PROFILE_W) && data->powerProfile.isValid())
                 jobj.insert("power_profile", data->powerProfile.getValue());
 
-            if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_ALL) && data->curveOptimizer.isValid())
+            if (features.cpu.contains(PWTS::Feature::AMD_RY_CO_ALL_W) && data->curveOptimizer.isValid())
                 jobj.insert("curve_optimizer_all", data->curveOptimizer.getValue());
         }
 
