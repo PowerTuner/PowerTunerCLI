@@ -436,8 +436,10 @@ namespace PWT::CLI {
     }
 
     void CliHelperIntel::setHwpEnable() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, hwpEnableArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, hwpEnableArg)) {
+            packetData->hwpEnable.setIgnored(true);
             return;
+        }
 
         if (!packetData->hwpEnable.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -448,8 +450,10 @@ namespace PWT::CLI {
     }
 
     void CliHelperIntel::setHwpPkgCtlPolarityEnable() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, hwpPkgCtlPolarityEnableArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, hwpPkgCtlPolarityEnableArg)) {
+            packetData->hwpPkgCtlPolarity.setIgnored(true);
             return;
+        }
 
         if (!packetData->hwpPkgCtlPolarity.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -467,8 +471,10 @@ namespace PWT::CLI {
         const bool hasAcw = cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, hwpRequestPkgAcwArg);
         const bool hasArgs = hasMin || hasMax || hasDesired || hasEpp || hasAcw;
 
-        if (!hasArgs)
+        if (!hasArgs) {
+            packetData->hwpRequestPkg.setIgnored(true);
             return;
+        }
 
         if (!packetData->hwpRequestPkg.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -529,8 +535,10 @@ namespace PWT::CLI {
         const bool hasArgs = hasMin || hasMax || hasDesired || hasEpp || hasAcw || hasPkgControl || hasMinValid ||
                             hasMaxValid || hasDesiredValid || hasEppValid || hasAcwValid;
 
-        if (!hasArgs)
+        if (!hasArgs) {
+            data.hwpRequest.setIgnored(true);
             return;
+        }
 
         if (!data.hwpCapapabilities.isValid() || !data.hwpRequest.isValid()) {
             logger->write(QString("invalid data in packet for cpu %1").arg(argIdx));
