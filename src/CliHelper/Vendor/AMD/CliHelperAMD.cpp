@@ -303,8 +303,10 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setCPPCEnable() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, cppcEnableArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, cppcEnableArg)) {
+            packetData->cppcEnableBit.setIgnored(true);
             return;
+        }
 
         if (!packetData->cppcEnableBit.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -375,8 +377,10 @@ namespace PWT::CLI {
         const bool hasEpp = cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, cppcRequestEppArg);
         const bool hasArgs = hasMin || hasMax || hasDesired || hasEpp;
 
-        if (!hasArgs)
+        if (!hasArgs) {
+            data.cppcRequest.setIgnored(true);
             return;
+        }
 
         if (!data.cppcRequest.isValid() || !data.cppcCapability1.isValid()) {
             logger->write(QString("invalid data in packet for cpu %1").arg(argIdx));
@@ -444,14 +448,8 @@ namespace PWT::CLI {
             if (features.cpu.contains(PWTS::Feature::AMD_CORE_PERFORMANCE_BOOST))
                 setCorePerfBoost(data, argIdx);
 
-            if (features.cpu.contains(PWTS::Feature::AMD_CPPC)) {
-                const bool hasPreferOS = cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, cppcRequestPreferOSArg);
-
-                if (hasPreferOS && !cmdParser->getCmdValue(CMDArg::SET_DEVICE_SETTINGS, cppcRequestPreferOSArg).toBool())
-                    setCPPCRequest(data, argIdx);
-                else
-                    data.cppcRequest.setValue({}, false);
-            }
+            if (features.cpu.contains(PWTS::Feature::AMD_CPPC))
+                setCPPCRequest(data, argIdx);
         }
     }
 

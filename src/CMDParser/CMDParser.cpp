@@ -805,9 +805,7 @@ namespace PWT::CLI {
             << helpIndent(helpIndentLv2) << sendDataReqHelp
             << helpIndent(helpIndentLv1) << cppcRequestEppArg << "\n"
             << helpIndent(helpIndentLv2) << "Thread level setting.\n"
-            << helpIndent(helpIndentLv2) << "CPPC request energy performance preference. [0, 255]\n\n"
-            << helpIndent(helpIndentLv3) << cppcRequestPreferOSArg << "\n"
-            << helpIndent(helpIndentLv4) << "Prefer CPPC request set by OS settings, like Windows power scheme or Linux sysfs. [0,1]\n\n";
+            << helpIndent(helpIndentLv2) << "CPPC request energy performance preference. [0, 255]\n\n";
     }
 #endif
 

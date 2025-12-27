@@ -168,6 +168,5 @@ namespace PWT::CLI {
     static constexpr char cppcRequestMinPerfArg[] = "cppc_request_min_perf";
     static constexpr char cppcRequestDesiredPerfArg[] = "cppc_request_desired_perf";
     static constexpr char cppcRequestEppArg[] = "cppc_request_epp";
-    static constexpr char cppcRequestPreferOSArg[] = "cppc_prefer_os";
 #endif
 }
