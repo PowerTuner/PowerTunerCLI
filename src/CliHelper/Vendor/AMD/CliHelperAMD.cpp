@@ -26,8 +26,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setApuSlow() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, apuSlowArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, apuSlowArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_APU_SLOW_R))
+                packetData->apuSlow.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->apuSlow.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -82,8 +86,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setTctlTemp() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, tctlTempArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, tctlTempArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_TCTL_TEMP_R))
+                packetData->tctlTemp.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->tctlTemp.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -96,8 +104,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setApuSkinTemp() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, apuSkinTempArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, apuSkinTempArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_APU_SKIN_TEMP_R))
+                packetData->apuSkinTemp.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->apuSkinTemp.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -110,8 +122,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setDgpuSkinTemp() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, dgpuSkinTempArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, dgpuSkinTempArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_DGPU_SKIN_TEMP_R))
+                packetData->dgpuSkinTemp.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->dgpuSkinTemp.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -124,8 +140,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setVrmCurrent() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmCurrentArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmCurrentArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_VRM_CURRENT_R))
+                packetData->vrmCurrent.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->vrmCurrent.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -138,8 +158,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setVrmSocCurrent() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmSocCurrentArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmSocCurrentArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_CURRENT_R))
+                packetData->vrmSocCurrent.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->vrmSocCurrent.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -152,8 +176,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setVrmMaxCurrent() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmMaxCurrentArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmMaxCurrentArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_VRM_MAX_CURRENT_R))
+                packetData->vrmMaxCurrent.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->vrmMaxCurrent.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -166,8 +194,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setVrmSocMaxCurrent() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmSocMaxCurrentArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, vrmSocMaxCurrentArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_VRM_SOC_MAX_CURRENT_R))
+                packetData->vrmSocMaxCurrent.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->vrmSocMaxCurrent.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -180,8 +212,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setStaticGfxClock() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, staticGfxClkArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, staticGfxClkArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_STATIC_GFX_CLK_R))
+                packetData->staticGfxClock.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->staticGfxClock.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -194,8 +230,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setMinGfxClock() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, minGfxClkArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, minGfxClkArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_MIN_GFX_CLOCK_R))
+                packetData->minGfxClock.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->minGfxClock.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -208,8 +248,12 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setMaxGfxClock() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, maxGfxClkArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, maxGfxClkArg)) {
+            if (!features.cpu.contains(PWTS::Feature::AMD_RY_MAX_GFX_CLOCK_R))
+                packetData->maxGfxClock.setIgnored(true);
+
             return;
+        }
 
         if (!packetData->maxGfxClock.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -222,8 +266,10 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setPowerProfile() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, amdPowerProfileArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, amdPowerProfileArg)) {
+            packetData->powerProfile.setIgnored(true);
             return;
+        }
 
         if (!packetData->powerProfile.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -241,8 +287,10 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setCOAll() const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, curveOptimizerArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, curveOptimizerArg)) {
+            packetData->curveOptimizer.setIgnored(true);
             return;
+        }
 
         if (!packetData->curveOptimizer.isValid()) {
             logger->write(QStringLiteral("invalid data in packet"));
@@ -267,8 +315,10 @@ namespace PWT::CLI {
     }
 
     void CliHelperAMD::setCOPer(PWTS::AMD::AMDCoreData &data, const QString &argIdx) const {
-        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, curveOptimizerPerArg))
+        if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, curveOptimizerPerArg)) {
+            data.curveOptimizer.setIgnored(true);
             return;
+        }
 
         if (!data.curveOptimizer.isValid()) {
             logger->write(QString("invalid data in packet for cpu %1").arg(argIdx));
