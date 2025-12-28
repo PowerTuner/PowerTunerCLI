@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
 
-project(PowerTunerCLI VERSION 1.0 DESCRIPTION "Official PowerTuner CLI Client" LANGUAGES CXX)
+project(PowerTunerCLI VERSION 1.1 DESCRIPTION "Official PowerTuner CLI Client" LANGUAGES CXX)
 
 option(WITH_INTEL "Enable support for Intel CPUs" ON)
 option(WITH_AMD "Enable support for AMD CPUs" ON)
