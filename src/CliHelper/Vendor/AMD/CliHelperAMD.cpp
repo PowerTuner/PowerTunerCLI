@@ -213,9 +213,7 @@ namespace PWT::CLI {
 
     void CliHelperAMD::setStaticGfxClock() const {
         if (!cmdParser->hasCmdValue(CMDArg::SET_DEVICE_SETTINGS, staticGfxClkArg)) {
-            if (!features.cpu.contains(PWTS::Feature::AMD_RY_STATIC_GFX_CLK_R))
-                packetData->staticGfxClock.setIgnored(true);
-
+            packetData->staticGfxClock.setIgnored(true);
             return;
         }
 
