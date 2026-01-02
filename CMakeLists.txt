@@ -94,6 +94,8 @@ if (has_ipo)
     set_property(TARGET ${PROJECT_NAME} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
 endif ()
 
+target_compile_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:-Wall -fsanitize=address,undefined -Wno-padded>)
+target_link_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:-fsanitize=address,undefined>)
 target_compile_definitions(${PROJECT_NAME} PRIVATE ${PRIV_DEFS})
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt::Core Qt::Network PWT::ClientCommon PWT::Shared PWT::ClientService)
 
